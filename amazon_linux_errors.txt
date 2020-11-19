@@ -1,0 +1,71 @@
+Date: Nov 18, 2020
+VM: First default amazon linux free tier machine
+Command: pip3 install pandas
+
+Error: pip3 can not install any modules.
+
+
+Exception:
+Traceback (most recent call last):
+  File "/usr/lib/python3.7/site-packages/pip/basecommand.py", line 215, in main
+    status = self.run(options, args)
+  File "/usr/lib/python3.7/site-packages/pip/commands/install.py", line 365, in run
+    strip_file_prefix=options.strip_file_prefix,
+  File "/usr/lib/python3.7/site-packages/pip/req/req_set.py", line 784, in install
+    **kwargs
+  File "/usr/lib/python3.7/site-packages/pip/req/req_install.py", line 854, in install
+    strip_file_prefix=strip_file_prefix
+  File "/usr/lib/python3.7/site-packages/pip/req/req_install.py", line 1069, in move_wheel_files
+    strip_file_prefix=strip_file_prefix,
+  File "/usr/lib/python3.7/site-packages/pip/wheel.py", line 345, in move_wheel_files
+    clobber(source, lib_dir, True)
+  File "/usr/lib/python3.7/site-packages/pip/wheel.py", line 287, in clobber
+    ensure_dir(dest)  # common for the 'include' path
+  File "/usr/lib/python3.7/site-packages/pip/utils/__init__.py", line 83, in ensure_dir
+    os.makedirs(path)
+  File "/usr/lib64/python3.7/os.py", line 213, in makedirs
+    makedirs(head, exist_ok=exist_ok)
+  File "/usr/lib64/python3.7/os.py", line 223, in makedirs
+    mkdir(name, mode)
+PermissionError: [Errno 13] Permission denied: '/usr/local/lib/python3.7'
+[ec2-user@ip-172-31-37-9 ~]$ which streamlit
+
+# Attempt2
+[ec2-user@ip-172-31-37-9 ~]$ pip3 install -r requirements.txt --user
+
+
+
+Running setup.py install for llvmlite ... error
+    Complete output from command /usr/bin/python3 -u -c "import setuptools, tokenize;__file__='/tmp/pip-build-ai62dic7/llvmlite/setup.py';f=getattr(tokenize, 'open', open)(__file__);code=f.read().replace('\r\n', '\n');f.close();exec(compile(code, __file__, 'exec'))" install --record /tmp/pip-0mn2itk1-record/install-record.txt --single-version-externally-managed --compile --user --prefix=:
+    running install
+    running build
+    got version from file /tmp/pip-build-ai62dic7/llvmlite/llvmlite/_version.py {'version': '0.34.0', 'full': 'c5889c9e98c6b19d5d85ebdd982d64a03931f8e2'}
+    running build_ext
+    /usr/bin/python3 /tmp/pip-build-ai62dic7/llvmlite/ffi/build.py
+    LLVM version... Traceback (most recent call last):
+      File "/tmp/pip-build-ai62dic7/llvmlite/ffi/build.py", line 105, in main_posix
+        out = subprocess.check_output([llvm_config, '--version'])
+      File "/usr/lib64/python3.7/subprocess.py", line 411, in check_output
+        **kwargs).stdout
+      File "/usr/lib64/python3.7/subprocess.py", line 488, in run
+        with Popen(*popenargs, **kwargs) as process:
+      File "/usr/lib64/python3.7/subprocess.py", line 800, in __init__
+        restore_signals, start_new_session)
+      File "/usr/lib64/python3.7/subprocess.py", line 1551, in _execute_child
+        raise child_exception_type(errno_num, err_msg, err_filename)
+    FileNotFoundError: [Errno 2] No such file or directory: 'llvm-config': 'llvm-config'
+
+    During handling of the above exception, another exception occurred:
+
+    Traceback (most recent call last):
+      File "/tmp/pip-build-ai62dic7/llvmlite/ffi/build.py", line 191, in <module>
+        main()
+      File "/tmp/pip-build-ai62dic7/llvmlite/ffi/build.py", line 181, in main
+        main_posix('linux', '.so')
+      File "/tmp/pip-build-ai62dic7/llvmlite/ffi/build.py", line 108, in main_posix
+        "to the path for llvm-config" % (llvm_config,))
+    RuntimeError: llvm-config failed executing, please point LLVM_CONFIG to the path for llvm-config
+    error: command '/usr/bin/python3' failed with exit status 1
+
+    ----------------------------------------
+Command "/usr/bin/python3 -u -c "import setuptools, tokenize;__file__='/tmp/pip-build-ai62dic7/llvmlite/setup.py';f=getattr(tokenize, 'open', open)(__file__);code=f.read().replace('\r\n', '\n');f.close();exec(compile(code, __file__, 'exec'))" install --record /tmp/pip-0mn2itk1-record/install-record.txt --single-version-externally-managed --compile --user --prefix=" failed with error code 1 in /tmp/pip-build-ai62dic7/llvmlite/
